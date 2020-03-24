@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Example of statechart of jsUML2 library</title>
+
+    <link type="text/css" rel="stylesheet" href="../build/css/UDStyle.css" media="screen" />
+    <script type="text/javascript" src="../build/UDCore.js"></script>
+    <script type="text/javascript" src="../build/UDModules.js"></script>
+
+
+    <script type="text/javascript">
+        window.onload = function () {
+            // Creating the diagram..
+            var stateMachineDiagram = new UMLStateMachineDiagram({ id: 'smDiagram', width: 380, height: 300 });
+
+            // Creating initial and final states
+            var initialPseudostate = new UMLInitialPseudostate({ x: 15, y: 180 });
+            var finalState = new UMLFinalState({ x: 350, y: 180 });
+
+            // Creating states (with no regions)
+            var simpleStateWashing = new UMLSimpleState({ x: 60, y: 170 });
+            var simpleStateRinsing = new UMLSimpleState({ x: 150, y: 170 });
+            var simpleStateSpinning = new UMLSimpleState({ x: 240, y: 170 });
+
+            var compositeStateWasher = new UMLCompositeState({ x: 50, y: 120 });
+            compositeStateWasher.setWidth(280);
+            compositeStateWasher.updateRegions();
+
+            // Creating transitions between states      
+            var transition1 = new UMLTransition({ a: initialPseudostate, b: simpleStateWashing });
+            var transition2 = new UMLTransition({ a: simpleStateWashing, b: simpleStateRinsing });
+            var transition3 = new UMLTransition({ a: simpleStateRinsing, b: simpleStateSpinning });
+            var transition4 = new UMLTransition({ a: simpleStateSpinning, b: finalState });
+
+            // Adding elements to the diagram
+            stateMachineDiagram.addElement(initialPseudostate);
+            stateMachineDiagram.addElement(finalState);
+            stateMachineDiagram.addElement(compositeStateWasher);
+            stateMachineDiagram.addElement(simpleStateWashing);
+            stateMachineDiagram.addElement(simpleStateRinsing);
+            stateMachineDiagram.addElement(simpleStateSpinning);
+
+            // Adding transitions
+            stateMachineDiagram.addElement(transition1);
+            stateMachineDiagram.addElement(transition2);
+            stateMachineDiagram.addElement(transition3);
+            stateMachineDiagram.addElement(transition4);
+
+            // Modifying states' properties
+            simpleStateWashing.setName("Washing");
+            simpleStateWashing.notifyChange();
+
+            simpleStateRinsing.setName('Rinsing');
+            simpleStateRinsing.notifyChange();
+
+            simpleStateSpinning.setName('Spinning');
+            simpleStateSpinning.notifyChange();
+
+            compositeStateWasher.setName('Washing Machine');
+            compositeStateWasher.notifyChange();
+
+            // Drawing the diagram 
+            stateMachineDiagram.draw();
+
+            // This diagram is NOT editable
+            stateMachineDiagram.interaction(false);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Example of statechart of jsUML2 library</h1>
+    <div id="smDiagram"></div>
+</body>
+
+</html>

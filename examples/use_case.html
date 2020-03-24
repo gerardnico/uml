@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Example of diagram of use case using jsUML2 library</title>
+
+  <link type="text/css" rel="stylesheet" href="../build/css/UDStyle.css" media="screen" />
+  <script type="text/javascript" src="../build/UDCore.js"></script>
+  <script type="text/javascript" src="../build/UDModules.js"></script>
+
+  <script type="text/javascript">
+    window.onload = function () {
+
+      var usecaseDiagram = new UMLUseCaseDiagram({ id: 'useCaseDiagram', width: 380, height: 300 });
+
+      // Creating UML Actors
+      var customerActor = new UMLActor({ x: 50, y: 50 });
+      usecaseDiagram.addElement(customerActor);
+      customerActor.setName("Customer");
+
+      var cookActor = new UMLActor({ x: 50, y: 170 });
+      usecaseDiagram.addElement(cookActor);
+      cookActor.setName("Cooker");
+
+      // Creating the UML Subsystem
+      var subsystem = new UMLSubSystem({ x: 155, y: 40 });
+      subsystem.setHeight(250);
+      subsystem.setName('Restaurant');
+      usecaseDiagram.addElement(subsystem);
+
+      // Creating the UML use cases
+      var useCasePay = new UMLUseCase({ x: 170, y: 80 });
+      usecaseDiagram.addElement(useCasePay);
+      var useCaseEat = new UMLUseCase({ x: 170, y: 130 });
+      usecaseDiagram.addElement(useCaseEat);
+      var useCaseServe = new UMLUseCase({ x: 170, y: 180 });
+      usecaseDiagram.addElement(useCaseServe);
+      var useCaseCooking = new UMLUseCase({ x: 170, y: 230 });
+      usecaseDiagram.addElement(useCaseCooking);
+
+      // Creating the UML communications
+      var communication1 = new UMLCommunication({ b: customerActor, a: useCasePay });
+      usecaseDiagram.addElement(communication1);
+      var communication2 = new UMLCommunication({ b: customerActor, a: useCaseEat });
+      usecaseDiagram.addElement(communication2);
+      var communication3 = new UMLCommunication({ b: cookActor, a: useCaseServe });
+      usecaseDiagram.addElement(communication3);
+      var communication4 = new UMLCommunication({ b: cookActor, a: useCaseCooking });
+      usecaseDiagram.addElement(communication4);
+
+      // Adding the name of use cases
+      useCasePay.setName('Pay for food');
+      useCasePay.notifyChange();
+
+      useCaseEat.setName('Eat food');
+      useCaseEat.notifyChange();
+
+      useCaseServe.setName('Serve food');
+      useCaseServe.notifyChange();
+
+      useCaseCooking.setName('Cook');
+      useCaseCooking.notifyChange();
+
+      // Drawing the diagram 
+      usecaseDiagram.draw();
+
+      // This diagram is editable
+      usecaseDiagram.interaction(true);
+    }
+  </script>
+</head>
+
+<body>
+
+  <h1>Example of diagram of use case using jsUML2 library</h1>
+  <div id="useCaseDiagram"></div>
+
+</body>
+</html>

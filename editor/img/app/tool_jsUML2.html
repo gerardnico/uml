@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)http://www.uco.es/users/in1rosaj/tools/jsUML2/editor/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    
+    <title>UML Diagram</title>
+
+    <link type="text/css" rel="stylesheet" href="./UDStyle.css">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">  
+
+    <script type="text/javascript" src="./UDCore.js.download"></script>
+    <script type="text/javascript" src="./UDModules.js.download"></script>
+    <script type="text/javascript" src="./UDApplication.js.download"></script>
+    <script type="text/javascript">
+      window.onload = function() {
+      			var width = screen.availWidth - 250;
+				var height = screen.availHeight;
+
+				if(width < 400)  width = width+250;
+				if(width > 1000) width = 1000;
+
+        var app = new Application( { id: 'umldiagram', width: width, height: height } );  
+      }
+    </script>
+    
+  </head>
+  
+  <body>
+  	<font color="blue" face="Helvetica, Verdana, Arial" size="2"><i><b>The jsUML2 editor (004)</b>. </i></font><i><font face="Helvetica, Verdana, Arial" size="2">This tool is a demo, and has been developed using the <a href="http://code.google.com/p/jsuml2" target="_blank">jsUML2</a> library.</font></i><font face="Helvetica, Verdana, Arial" size="2"> (C) The authors, Feb 2014.</font><br>
+  	<font color="black" face="Helvetica, Verdana, Arial" size="2">You may go to the previous working version of this editor (<a href="http://www.uco.es/users/in1rosaj/tools/jsUML2/editor_003/index.html">003</a>). Notice that no public use, with or without partial modification or adaptation, should be performed without explicit permission. Then, it is important to acknowledge the original work publicly on your site and not to pass it off as your own. Additionally, any contribution to the project will be appreciated and acknowledged.
+	</font><br>
+	
+    <div id="umldiagram">
+    <div id="ud_tools_div"><h1><img src="./vertical_flow.png">Actions</h1><ul id="ud_tools_ul1"><li><img src="./import_export.png"><a>Export/Import to xml</a></li><li><img src="./generate_image.png"><a>Generate image (png)</a></li><li><img src="./delete_object.png"><a>Delete object</a></li><li><img src="./modify_color.png"><a>Modify color</a></li><li><img src="./UMLUseCaseDiagram.png"><a>New use case diagram</a></li><li><img src="./UMLClassDiagram.png"><a>New class diagram</a></li><li><img src="./UMLPackageDiagram.png"><a>New package diagram</a></li><li><img src="./UMLInstanceDiagram.png"><a>New instance diagram</a></li><li><img src="./UMLComponentDiagram.png"><a>New component diagram</a></li><li><img src="./UMLDeploymentDiagram.png"><a>New deployment diagram</a></li><li><img src="./UMLActivityDiagram.png"><a>New activity diagram</a></li><li><img src="./UMLSequenceDiagram.png"><a>New sequence diagram</a></li><li><img src="./UMLStateMachineDiagram.png"><a>New state machine diagram</a></li><li><img src="./UMLProfile.png"><a>New profile</a></li></ul><h1><img src="./vertical_flow.png">Diagram elements</h1><ul id="ud_tools_ul2"><li><img src="./UMLMetaclass.png"><a>Metaclass</a></li><li><img src="./UMLStereotype.png"><a>Stereotype</a></li><li><img src="./UMLExtension.png"><a>Extension</a></li><li><img src="./UMLNote.png"><a>Note</a></li><li><img src="./UMLAnchor.png"><a>Anchor</a></li></ul></div><div id="ud_container_div"><div id="ud_selector_div"><ul id="ud_selector_ul"><li><a>Use case diagram</a></li><li><a>Class diagram</a></li><li><a>Package diagram</a></li><li><a>Instance diagram</a></li><li><a>Component diagram</a></li><li><a>Deployment diagram</a></li><li><a>Activity diagram</a></li><li><a>Sequence diagram</a></li><li><a>State Machine dia...</a></li><li class="active"><a>Profile</a></li></ul></div><div id="ud_diagram_div" class="ud_diagram_div" style="width: 1000px; height: 580px;"><canvas class="ud_diagram_canvas" width="1000" height="580"></canvas><canvas class="ud_diagram_canvas" width="1000" height="580"></canvas><div id="ud_update_div" title="apply changes in profile to diagrams" style="right: 15px; display: block;"></div><div id="ud_delete_div"></div></div></div></div>
+
+      
+   
+   
+    <div id="debug"></div> 
+  
+<div class="ud_popupColor" style="top: 389px; left: 824px;"><div id="divBlock1"><div id="colorHtml" style="color: rgb(255, 255, 255);">#FFFFBB</div><div id="red"><canvas id="R" width="150" height="20"></canvas></div><div id="green"><canvas id="G" width="150" height="20"></canvas></div><div id="blue"><canvas id="B" width="150" height="20"></canvas></div><form><input type="submit" value="ok"><input type="submit" value="cancel"></form></div><div id="divBlock2"><div id="divSelectColor"><canvas id="selectColor" width="90" height="90"></canvas></div><div></div></div></div></body></html>

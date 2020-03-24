@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Example of a sequence diagram using the jsUML2 library</title>
+
+
+	<link type="text/css" rel="stylesheet" href="../build/css/UDStyle.css" media="screen" />
+	<script type="text/javascript" src="../build/UDCore.js"></script>
+	<script type="text/javascript" src="../build/UDModules.js"></script>
+
+	<script type="text/javascript">
+		window.onload = function () {
+
+			var sequenceDiagram = new UMLSequenceDiagram({ id: 'sequenceDiagram', width: 1000, height: 580 });
+			
+			// Create lifelines
+			var client = new UMLLifeline({ x: 100, y: 70 });
+			var server = new UMLLifeline({ x: 270, y: 70 });
+			var userList = new UMLLifeline({ x: 500, y: 70 });
+			
+			// Create the block Alternative
+			var alternative = new UMLAlternative({ x: 40, y: 290 });
+			
+			// Create the block Loop
+			var loop = new UMLLoop({ x: 180, y: 120 });
+			
+			// Create messages
+			var insert = new UMLSendMessage({ a: client, b: server, y: 110 });
+			var searchUser = new UMLSendMessage({ a: insert.getElementB(), b: userList, y: 150 });
+			var foundUser = new UMLReplyMessage({ a: searchUser.getElementB(), b: insert.getElementB(), y: 180 });
+			var validatePassword = new UMLSendMessage({ a: insert.getElementB(), b: searchUser.getElementB(), y: 210 });
+			var replyValidate = new UMLReplyMessage({ a: searchUser.getElementB(), b: insert.getElementB(), y: 240 });
+			var permittedAccess = new UMLReplyMessage({ a: insert.getElementB(), b: client, y: 310 });
+			var restrictedAccess = new UMLReplyMessage({ a: insert.getElementB(), b: client, y: 380 });
+
+			// Add nodes to the diagram
+			sequenceDiagram.addElement(client);
+			sequenceDiagram.addElement(server);
+			sequenceDiagram.addElement(userList);
+			sequenceDiagram.addElement(loop);
+			sequenceDiagram.addElement(alternative);
+
+			// Add messages to the diagram
+			sequenceDiagram.addElement(insert);
+			sequenceDiagram.addElement(searchUser);
+			sequenceDiagram.addElement(foundUser);
+			sequenceDiagram.addElement(validatePassword);
+			sequenceDiagram.addElement(replyValidate);
+			sequenceDiagram.addElement(restrictedAccess);
+			sequenceDiagram.addElement(permittedAccess);
+
+			//Properties of lifelines
+			client.setName(':Client');
+			client.notifyChange();
+			server.setName(':Server');
+			server.notifyChange();
+			userList.setName(':userList');
+			userList.notifyChange();
+			
+			//Properties of the block Alternative
+			alternative.setBackgroundColor('#F8F25A');
+			alternative.setWidth(300);
+			alternative.getNodeChilds()[0].setGuard('validated');
+			alternative.getNodeChilds()[1].setGuard('else');
+			alternative.notifyChange();
+			//Properties of the block Loop
+			loop.setBackgroundColor('#F8F25A');
+			loop.setWidth(400);
+			loop.setHeight(150);
+			loop.setGuard('for\neach user\n in library');
+			loop.notifyChange();
+
+			//Properties of the messages
+			insert.setName('1: insert login and password');
+			insert.notifyChange();
+			searchUser.setName('2: search for user');
+			searchUser.notifyChange();
+			foundUser.setName('3: user found');
+			foundUser.notifyChange();
+			validatePassword.setName('4: validate user');
+			validatePassword.notifyChange();
+			replyValidate.setName('5: user info');
+			replyValidate.notifyChange();
+			permittedAccess.setName('6: access permitted');
+			permittedAccess.notifyChange();
+			restrictedAccess.setName('6: access restricted');
+			restrictedAccess.notifyChange();
+
+
+
+			sequenceDiagram.draw();
+			sequenceDiagram.interaction(true);
+			sequenceDiagram.setUpdateHeightCanvas(true);
+
+		}
+	</script>
+</head>
+
+<body>
+	<h1>Example of a sequence diagram using the jsUML2 library</h1>
+	<div id="sequenceDiagram"></div>
+</body>
+
+</html>

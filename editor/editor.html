@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>UML Diagram</title>
+
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+    <link type="text/css" rel="stylesheet" href="../build/css/UDStyle.css" media="screen" />
+    <script type="text/javascript" src="../build/UDCore.js"></script>
+    <script type="text/javascript" src="../build/UDModules.js"></script>
+
+    <script type="text/javascript" src="UDApplication.js"></script>
+    <script type="text/javascript">
+      window.onload = function() {
+      			var width = screen.availWidth - 250;
+				var height = screen.availHeight;
+
+				if(width < 400)  width = width+250;
+				if(width > 1000) width = 1000;
+
+        var app = new Application( { id: 'umldiagram', width: width, height: height } );  
+      }
+    </script>
+    
+  </head>
+  
+  <body>
+  	<font color="blue" face="Helvetica, Verdana, Arial" size="2"><i><b>The jsUML2 editor (004)</b>. </i></font><i><font face="Helvetica, Verdana, Arial" size="2">This tool is a demo, and has been developed using the <a href="http://code.google.com/p/jsuml2" target="_blank">jsUML2</a> library.</font></i><font face="Helvetica, Verdana, Arial" size="2"> (C) The authors, Feb 2014.</font><br>
+  	<font color="black" face="Helvetica, Verdana, Arial" size="2">You may go to the previous working version of this editor (<a href="../editor_003/index.html">003</a>). Notice that no public use, with or without partial modification or adaptation, should be performed without explicit permission. Then, it is important to acknowledge the original work publicly on your site and not to pass it off as your own. Additionally, any contribution to the project will be appreciated and acknowledged.
+	</font><br>
+	
+    <div id="umldiagram" >
+    </div>
+
+      
+   
+   
+    <div id="debug"></div> 
+  </body>

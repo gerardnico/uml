@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Example of a simple class diagram using the jsUML2 library (GeneralizationSet)</title>
+
+    <link type="text/css" rel="stylesheet" href="../build/css/UDStyle.css" media="screen" />
+    <script type="text/javascript" src="../build/UDCore.js"></script>
+    <script type="text/javascript" src="../build/UDModules.js"></script>
+
+
+    <script type="text/javascript">
+        window.onload = function () {
+
+            var classDiagram = new UMLClassDiagram({ id: 'classDiagram', width: 580, height: 300 });
+
+            // Adding classes...
+            var vehicleClass = new UMLClass({ x: 100, y: 50 });
+            var carClass = new UMLClass({ x: 30, y: 200 });
+            var boatClass = new UMLClass({ x: 150, y: 200 });
+            var sailorClass = new UMLClass({ x: 400, y: 200 });
+
+            classDiagram.addElement(vehicleClass);
+            classDiagram.addElement(carClass);
+            classDiagram.addElement(boatClass);
+            classDiagram.addElement(sailorClass);
+
+
+
+            //Defining vehicleClass
+            vehicleClass.setName("Vehicle");
+            vehicleClass.addAttribute('owner');
+            vehicleClass.addAttribute('capacity');
+            vehicleClass.addOperation('getOwner()');
+            vehicleClass.addOperation('getCapacity()');
+
+            //Defining carClass
+            carClass.setName("Car");
+            carClass.addAttribute('num_doors');
+            carClass.addOperation('getNumDoors()');
+
+            //Defining boatClass
+            boatClass.setName("Boat");
+            boatClass.addAttribute('mast');
+            boatClass.addOperation('getMast()');
+
+            //Defining sailorClass
+            sailorClass.setName("Sailor");
+            sailorClass.addAttribute('name');
+            sailorClass.addOperation('getName()');
+
+            // Adding generalizations...
+            var generalizationSet = new UMLGeneralizationSet();
+
+            generalizationSet.setElements(carClass, vehicleClass);
+            generalizationSet.addElement(boatClass);
+            classDiagram.addElement(generalizationSet);
+            // Adding other relations
+            var directedAssociation = new UMLAssociation({ a: boatClass, b: sailorClass });
+
+            directedAssociation.setRoleB("Work on");
+            directedAssociation.setComponentMultiplicityB('*');
+            directedAssociation.setDirection('a');
+
+            classDiagram.addElement(directedAssociation);
+
+            //Draw the diagram
+            classDiagram.draw();
+
+            //Interaction is possible (editable)
+            classDiagram.interaction(true);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Example of a simple class diagram using the jsUML2 library (GeneralizationSet)</h1>
+    <div id="classDiagram"></div>
+</body>
+
+</html>
